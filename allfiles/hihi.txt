@@ -1,0 +1,10 @@
+['Twitter But Better is so cool, more people should start using this!!!', '#education #fashion #sports ', ['No comments yet'], ['admin', 'admin']]
+
+['Twitter But Better is so cool, more people should start using this!!!', '#education #fashion #sports ', ['admin : test comment 1', 'admin : test comment 1', 'admin : test comment 2'], ['admin', 'admin']]
+
+['today is a very sunny day. imma go blind', '#sun # funny # today ', ['No comments yet'], ['sahana']]
+
+['dogs are very cute. ', '#dogs # cute # animals # pets # goldenretriever ', ['No comments yet'], ['sahana']]
+
+['education is cool', '#education #dogs ', ['No comments yet'], ['admin']]
+
