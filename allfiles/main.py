@@ -193,11 +193,7 @@ def mainpage():
             if c[0]=="":
                 i[2]=["No comments yet"]
             
-        f = open('hihi.txt','w')
-        for i in post_with_hashtags_comments:
-            f.writelines(str(i))
-            f.write('\n\n')
-        f.close()
+        
 
         return render_template('mainpage.html', text=(text), sessionusername=session["username"], topic=topic,
                                posts=post_with_hashtags_comments)
@@ -208,6 +204,8 @@ def postcreation():
     if request.method == "POST":
         username = session['username']
         postcontents = request.form['postcontent']
+        if postcontents=='':
+            return '<p>User post cannot be empty.</p>'
         posttags = request.form['posttags']
         session['postcontents'] = postcontents
         session['posttags'] = posttags

@@ -8,6 +8,7 @@ def gettopics(username): #returns a list of topics taking username as parameter
     return ((eval(client.sqlquery(f"select topics from user_info where username = '{username}'")[0])[0]).split(','))
 
 def auth(username,password): #returns True or False depeding on if password and username match, takes username and password as required parameters
+    print("Auth status:", getpassword(username) == password)
     return getpassword(username) == password
 
 def getposts(username):

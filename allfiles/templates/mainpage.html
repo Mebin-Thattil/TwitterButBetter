@@ -10,7 +10,27 @@
 
 
     <style>
-
+    #comment.form-control {
+            color: white; /* Change the input text color to white */
+        }
+.form-control::placeholder {
+        color: white; /* Change the placeholder text color to white */
+    }
+.form-control {
+    color: white; /* Change the input text color to white */
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
 .rightstatic{
 position:fixed;
 }
@@ -130,6 +150,7 @@ ol li {
 
 
 
+
     </style>
 
 </head>
@@ -217,12 +238,12 @@ background: #080530;">
                     {%for i in posts%}
                     <br>
                     <div>
-                    <button type="button" class="btn btn-primary">
-                        <a style="color: white;text-decoration: none;" href = 'about/{{i[3][0]}}'>
-                        Post by <span class="badge rounded-pill text-bg-info">{{i[3][0]}}</span>
-                        </a>
-                    </button>
-                </div>
+                        <button type="button" class="btn btn-primary">
+                            <a style="color: white;text-decoration: none;" href='about/{{i[3][0]}}'>
+                                Post by <span class="badge rounded-pill text-bg-info">{{i[3][0]}}</span>
+                            </a>
+                        </button>
+                    </div>
                     <span>
                     <div class="card black">
                         <div class="card black">
@@ -242,7 +263,8 @@ background: #080530;">
                             {% set comments = i[2] %}
 
                             <p id="com">{%for i in comments%}</p>
-                            <li style="line-height: 1.2;color:white;background:#110b80; lighten;opacity: 0.8; ">{{i}}</li>
+                            <li style="line-height: 1.2;color:white;background:#110b80; lighten;opacity: 0.8; ">{{i}}
+                            </li>
                             {%endfor%}
                         </div>
                     </ol>
@@ -265,8 +287,9 @@ background: #080530;">
                         <div class="input-group mb-3">
                             <input type="hidden" name="commentpost" value="{{i}}">
                             <input type="text" class="form-control" id="comment" name="comment"
-                                   value="enter comment " autocomplete="off"
-                                   style="color:white;background: #0d0861;border:#75068A;">
+                                   placeholder="Enter Comments" autocomplete="off"
+                                   style="background: #0d0861;border:#75068A;
+">
                             <div class="input-group-append">
                                 <input class="btn btn-outline-danger" type="submit" value="Submit">
                             </div>
@@ -297,7 +320,8 @@ background: #080530;">
 
                             <center>
                                 <h3> Add Posts </h3>
-                                <a href="postcreationpage"><img src="https://i.postimg.cc/B6Y59GWD/ezgif-com-crop.gif"width="50" height="40"></a>
+                                <a href="postcreationpage"><img src="https://i.postimg.cc/B6Y59GWD/ezgif-com-crop.gif"
+                                                                width="50" height="40"></a>
 
                             </center>
                             <br>
@@ -311,6 +335,11 @@ background: #080530;">
                                 <a class="btn btn-primary" a href="passwordreset" role="button">🔐</a>
                             </center>
 
+                            <br>
+                            <center>
+                                <h3> Logout </h3>
+                                <a class="btn btn-primary" a href="/" role="button">👋</a>
+                            </center>
 
 
                         </div>
