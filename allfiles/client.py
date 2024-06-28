@@ -5,7 +5,7 @@ def returntables():
     s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     s.connect((ip,port))
     while True:
-        msg = s.recv(10024)
+        msg = s.recv(100000000)
         text = msg.decode().split('\n')
         if len(text) == 4:
             user_info = text[0]
@@ -20,7 +20,7 @@ def sqlquery(data):
     s.send(data.encode())
     
     while True:
-        msg = s.recv(10000000)
+        msg = s.recv(100000000)
         output = msg.decode().split(';')
         import time
         time.sleep(0.001)

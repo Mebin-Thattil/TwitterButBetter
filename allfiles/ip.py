@@ -5,4 +5,4 @@ ip = socket.gethostbyname(hostname)
 
 custom_ip = ''
 #ip = custom_ip
-port = 8800
+port = 6464
