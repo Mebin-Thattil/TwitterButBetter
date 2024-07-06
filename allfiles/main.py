@@ -9,6 +9,7 @@ import json
 import time
 import comments
 start = time.time()
+
 end = time.time()
 tm = end - start
 x = open('time.txt', 'w')
@@ -120,21 +121,21 @@ def mainpage():
             username = session["username"]
             tags = userdetails.find_posttags_with_postcontent(postcontents)
             tagmanagement.add_tags_to_user(username, tags)
-            return redirect(url_for("mainpage"))
+            return ('', 204)
         except:
             try:
                 postcontents = request.form["dislikedpost"]
                 username = session["username"]
                 tags = userdetails.find_posttags_with_postcontent(postcontents)
                 tagmanagement.dislikepost(tags, username)
-                return redirect(url_for("mainpage"))
+                return ('', 204)
             except:
                 postcontents = request.form["commentpost"]
                 comment = request.form["comment"]
                 username = session["username"]
                 post_id = userdetails.find_postid_with_postcontent(eval(postcontents)[0])
                 comments.input_comment(post_id, username, comment)
-                return redirect(url_for("mainpage"))
+                return ('', 204)
 
 
     else:

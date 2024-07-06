@@ -9,9 +9,8 @@ def scrape(topic_name):
             req = requests.get(f"https://www.news18.com/topics/{i}/")
             #req = requests.get(f"https://www.news18.com/topics/dogs/")
             soup = BeautifulSoup(req.content, "html.parser")
-
             #finds only headlines from all the data and adds them to a list
-            filtered = soup.find_all('p',attrs = {"class":"jsx-9548ccfa23ccd22c"})
+            filtered = soup.find_all('p',attrs = {"class":"jsx-894ab2deeb1b9f4a"})
             filtered = list(filtered)
             for i in filtered:
                 l += i
@@ -23,4 +22,4 @@ def scrape(topic_name):
     #except:
     print("Wasn't able to scrape data")
 
-print(scrape('education,fashion'))
+#print(scrape('education,fashion'))

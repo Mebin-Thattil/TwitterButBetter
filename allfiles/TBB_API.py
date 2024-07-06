@@ -3,8 +3,8 @@ Python File so that bots can create posts
 '''
 import ollama
 import time
+import userdetails
 post_list,hashtag_list = [],[]
-from userdetails import insertpost
 def generate_llm_response():
         response = ollama.chat(model='content_bot_llm', messages=[
         {
@@ -13,9 +13,12 @@ def generate_llm_response():
         },
         ])
         return(response['message']['content'])
+def cleanup_before_sql_query(content): #this function makes sure sql does not throw syntax for using ' as it also represents a comment
+    return content.replace("'",'"')
 
-number_of_users = int(input("Enter How many users you want to generate for: "))
-for i in range(number_of_users):
+
+#number_of_users = int(input("Enter How many users you want to generate for: "))
+for i in range(1):
     print("Started please wait...")
     response = generate_llm_response()
     response_list = response.split('\n')
@@ -27,7 +30,6 @@ for i in range(number_of_users):
                 start_index_username = i
                 break
     username = response_list[0][start_index_username:]
-    print(response_list,'\n\n\n')
     print('username is',username)
 
     start_index_post,end_index_post = 0,0
@@ -56,5 +58,10 @@ for i in range(number_of_users):
 push_to_db = input("Should I push to DB[y/n]: ")
 if push_to_db == 'y':
      for i in range(len(post_list)):
-        insertpost(username, post_list[i], hashtag_list[i])
-        time.sleep(0.5)
+        print("Inserting post [", (i+1), '/', len(post_list),']...')
+        username = cleanup_before_sql_query(username.strip(":"))
+        postcontent = cleanup_before_sql_query(post_list[i].strip(":"))
+        topics = cleanup_before_sql_query(hashtag_list[i].strip(":"))
+
+        userdetails.insertpost(username, postcontent ,topics)
+        time.sleep(0.01)

@@ -27,12 +27,12 @@ while True:
             #clientsocket.send('hi from server'.encode())
             while True:
                 clientmsg = clientsocket.recv(10002400)
-                print(clientmsg)
+                print("Client Message: ", clientmsg)
                 import time
                 mycursor.execute(clientmsg.decode())
                 if 'select' not in clientmsg.decode():
                     mydb.commit()
-                    clientsocket.close()
+                    clientsocket.close()    
                     break
                 elif clientmsg.decode() == '':
                     clientsocket.close()

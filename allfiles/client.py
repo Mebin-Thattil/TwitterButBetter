@@ -23,12 +23,12 @@ def sqlquery(data):
         msg = s.recv(100000000)
         output = msg.decode().split(';')
         import time
-        time.sleep(0.001)
+        time.sleep(0.01)
         break
     s.close()
-    return output
     import time
     time.sleep(0.01)
+    return output
         
     
    
